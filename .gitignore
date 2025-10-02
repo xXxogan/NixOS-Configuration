@@ -1,6 +1,41 @@
-# Ignore build outputs from performing a nix-build or `nix build` command
-result
-result-*
+# Nix store paths
+/nix/store/
 
-# Ignore automatically generated direnv output
-.direnv
+# User-specific nix config
+~/.nix-profile/
+~/.nix-defexpr/
+~/.nix-channels
+~/.nixpkgs
+
+# Environment-specific files
+result
+*.drv
+*.lock
+
+# NixOS configuration build outputs
+*.gcda
+*.gcno
+
+# Vim swap files (если используете vim)
+*.swp
+*.swo
+
+# Emacs backup files
+*~
+\#*\#
+
+# JetBrains IDEs
+.idea/
+
+# VS Code
+.vscode/
+
+# General OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
