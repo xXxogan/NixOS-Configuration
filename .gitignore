@@ -1,41 +1,53 @@
-# Nix store paths
-/nix/store/
-
-# User-specific nix config
-~/.nix-profile/
-~/.nix-defexpr/
-~/.nix-channels
-~/.nixpkgs
-
-# Environment-specific files
-result
-*.drv
-*.lock
-
-# NixOS configuration build outputs
-*.gcda
-*.gcno
-
-# Vim swap files (если используете vim)
+# ---- Vim / Neovim ----
 *.swp
 *.swo
+*.swn
+*~
 
-# Emacs backup files
+# ---- Emacs ----
 *~
 \#*\#
+.\#*
 
-# JetBrains IDEs
-.idea/
-
-# VS Code
+# ---- VSCode ----
 .vscode/
+.history/
 
-# General OS files
-.DS_Store
-Thumbs.db
+# ---- Nix ----
+# Результаты сборки nix-build
+result
+result-*
+# NixOS временные линки
+.nix-*
+# Директория nix-shell окружений
+.shell/
+# Кэш Nix
+.cache/
+.direnv/
 
-# Logs
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ---- Logs ----
 *.log
 
-# Temporary files
-tmp/
+# ---- System ----
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# ---- Virtualization ----
+*.vdi
+*.vbox
+*.vbox-prev
+*.vmdk
+*.qcow2
+*.img
+*.ova
+
+# ---- Other temporary files ----
+*.tmp
+*.bak
+*.old
