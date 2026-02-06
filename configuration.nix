@@ -2,13 +2,24 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, home-manager, username, homeDirectory ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
+      home-manager.nixModules.home-manager
       ./hardware-configuration.nix
     ];
+
+  home-manager.enable = true;
+  home-manager.useUserPackages = true;
+  home-manager.users.${username} = import ./home.nix { inherit config pkgs lib username homeDirectory; };
+  
+  users.users.${username} = {
+    isNormalUser = true;
+    home = homeDirectory;
+    extraGroups = [ "wheel" "networkmanager" ];
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
