@@ -19,7 +19,7 @@
 		in {
 		nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
 			inherit system;
-			specialArgs = { inherit homeManager username homeDirectory; };
+			specialArgs = { inherit home-manager username homeDirectory; };
 			modules = [ ./configuration.nix ];
 		};
 	};
