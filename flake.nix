@@ -14,15 +14,13 @@
 	outputs = { nixpkgs, home-manager, ... }: 
 		let
 			system = "aarch64-linux";
+			username = "xogan";
+			homeDirectory = "/home/${username}";
 		in {
 		nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
 			inherit system;
+			specialArgs = { inherit homeManager username homeDirectory; };
 			modules = [ ./configuration.nix ];
-		};
-
-		homeConfigurations.xogan = home-manager.lib.homeManagerConfiguration {
-			pkgs = nixpkgs.legacyPackages.${system};
-			modules = [ ./home.nix ];
 		};
 	};
 }
