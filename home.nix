@@ -1,22 +1,22 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, username, homeDirectory, ... }: {
 	home = {
-		username = "xogan";
-		homeDirectory = "/home/xogan";
+		inherit username homeDirectory;
 		stateVersion = "25.05";
 		
 		packages = with pkgs; [
 			neofetch
 			htop
+			git
 		];
 	};
 	programs.bash = {
 		enable = true;
 		shellAliases = 
 		let
-			flakePath = "~/nix"; 
+			flakePath = "${homeDirectory}/nixos-config"; 
 		in {
-			rebuild = "sudo nixos-rebuild switch --flake ${flakePath}";
-			hms = "home-manager switch --flake ${flakePath}";
+			rebuild = "sudo nixos-rebuild switch --flake ${flakePath}#nixos";
+			hms = "home-manager switch --flake ${flakePath}#xogan";
 			v = "vim";
 		};
 	};
