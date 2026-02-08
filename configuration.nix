@@ -7,11 +7,11 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      home-manager.nixModules.home-manager
+      home-manager.nixosModules.home-manager
     ];
 
   # --- Настройки Home Manager ---
-  home-manager.enable = true;
+  # home-manager.enable = true;
   home-manager.useUserPackages = true;
   # Передаем аргументы (pkgs, lib и т.д.) автоматически через extraSpecialArgs, если нужно
   home-manager.users.${username} = import ./home.nix;
