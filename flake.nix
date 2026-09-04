@@ -6,8 +6,12 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, disko, ... }:
     let
       system = "aarch64-linux";
       username = "xogan";
@@ -16,7 +20,11 @@
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit home-manager username homeDirectory; };
-        modules = [ ./configuration.nix ];
+        modules = [
+          disko.nixosModules.disko
+          ./disko.nix
+          ./configuration.nix
+        ];
       };
     };
 }
