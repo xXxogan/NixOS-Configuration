@@ -80,7 +80,8 @@ cd NixOS-Configuration
 ```bash
 nix run github:nix-community/nixos-anywhere -- \
   --flake .#nixos \
-  root@192.168.1.123
+  --build-on-remote \
+  root@192.168.14.138
 ```
 
 Замените `192.168.1.123` на реальный IP из шага 2.
