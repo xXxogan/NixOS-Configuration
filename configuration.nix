@@ -74,7 +74,7 @@
     pulse.enable = true;
   };
 
-  users.users.roothashedPassword = "$6$cj44.peC5LuEO.u2$3DnoYW5JIprHgTMqyDN6MtFXaPSBO0eOfECWueCHgPlgsqdPhB/2tRICaZ.uad6yezPWYmvtDQmA6E8Sf61Ax1";
+  users.users.root.hashedPassword = "$6$cj44.peC5LuEO.u2$3DnoYW5JIprHgTMqyDN6MtFXaPSBO0eOfECWueCHgPlgsqdPhB/2tRICaZ.uad6yezPWYmvtDQmA6E8Sf61Ax1";
 
   # --- Пользователь (Объединенный блок) ---
   users.users.${username} = {
