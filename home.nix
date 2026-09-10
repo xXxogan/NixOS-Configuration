@@ -15,7 +15,7 @@
     enable = true;
     shellAliases = 
       let
-        flakePath = "${homeDirectory}/nixos-config"; 
+        flakePath = "${homeDirectory}/NixOS-Configuration"; 
       in {
         # Обновляем всё сразу одной командой
         rebuild = "sudo nixos-rebuild switch --flake ${flakePath}#nixos";

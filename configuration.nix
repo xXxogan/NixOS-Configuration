@@ -15,7 +15,7 @@
   home-manager.useUserPackages = true;
   # Передаем аргументы (pkgs, lib и т.д.) автоматически через extraSpecialArgs, если нужно
   home-manager.users.${username} = import ./home.nix;
-  
+
   # Если в home.nix нужны username/homeDirectory, их можно передать так:
   home-manager.extraSpecialArgs = { inherit username homeDirectory; };
 
@@ -24,7 +24,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # --- Сеть ---
-  networking.hostName = "nixos"; 
+  networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
   # --- Локаль и Время ---
@@ -46,7 +46,7 @@
   # ! ВАЖНО: Шрифты консоли для русского языка
   console = {
     font = "Lat2-Terminus16";
-    keyMap = "ru"; 
+    keyMap = "ru";
   };
 
   # --- Графическая среда (GNOME) ---
@@ -55,7 +55,7 @@
     videoDrivers = [ "modesetting" ];
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
-    
+
     # ! ВАЖНО: Настройка клавиатуры (US + RU) и переключение по Alt+Shift
     xkb = {
       layout = "us,ru";
@@ -74,14 +74,17 @@
     pulse.enable = true;
   };
 
+  user.users.roothashedPassword = "$6$cj44.peC5LuEO.u2$3DnoYW5JIprHgTMqyDN6MtFXaPSBO0eOfECWueCHgPlgsqdPhB/2tRICaZ.uad6yezPWYmvtDQmA6E8Sf61Ax1";
+
   # --- Пользователь (Объединенный блок) ---
   users.users.${username} = {
     isNormalUser = true;
+    hashedPassword = "$6$cj44.peC5LuEO.u2$3DnoYW5JIprHgTMqyDN6MtFXaPSBO0eOfECWueCHgPlgsqdPhB/2tRICaZ.uad6yezPWYmvtDQmA6E8Sf61Ax1";
     description = "Xogan";
     home = homeDirectory;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      # thunderbird 
+      # thunderbird
     ];
   };
 
@@ -98,7 +101,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    vim 
+    vim
     wget
     git
     open-vm-tools
